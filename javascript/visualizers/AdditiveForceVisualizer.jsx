@@ -184,8 +184,12 @@ class AdditiveForceVisualizer extends React.Component {
     let totalNegEffects =
       sum(map(filter(data, x => x.effect < 0), x => -x.effect)) || 0;
     this.domainSize = Math.max(totalPosEffects, totalNegEffects) * 3;
+    // TODO: CONTINUE EDITING HERE
+    // let scale = scaleLinear()
+    //   .domain([0, this.domainSize])
+    //   .range([0, width]);
     let scale = scaleLinear()
-      .domain([0, this.domainSize])
+      .domain([0, 10])
       .range([0, width]);
     let scaleOffset = width / 2 - scale(totalNegEffects);
 

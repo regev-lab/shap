@@ -337,7 +337,7 @@ def update_axis_limits(ax, total_pos, pos_features, total_neg,
             spine.set_visible(False)
 
 
-def draw_additive_plot(data, figsize, show, text_rotation=0):
+def draw_additive_plot(data, figsize, show, text_rotation=0, fig=None, ax=None):
     """Draw additive plot."""
     # Turn off interactive plot
     if show is False:
@@ -352,7 +352,8 @@ def draw_additive_plot(data, figsize, show, text_rotation=0):
     offset_text = (np.abs(total_neg) + np.abs(total_pos)) * 0.04
     
     # Define plots
-    fig, ax = plt.subplots(figsize=figsize)
+    if fig is None or ax is None:
+        fig, ax = plt.subplots(figsize=figsize)
     
     # Compute axis limit
     update_axis_limits(ax, total_pos, pos_features, total_neg,
